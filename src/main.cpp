@@ -64,17 +64,17 @@ Espfc::Espfc espfc;
   #elif defined(ESPFC_MULTI_CORE_RP2040)
 
     // RP2040 multicore
-    volatile static bool setup1Done = false;
+    volatile static bool setupDone = false;
     void setup1()
     {
+      while(!setupDone); //wait for setup()
       espfc.beginOther();
-      setup1Done = true;
     }
     void setup()
     {
       espfc.load();
       espfc.begin();
-      while(!setup1Done); //wait for setup1()
+      setupDone = true;
     }
     void loop()
     {

@@ -19,7 +19,7 @@ class Mixer
     {
       EscConfig motorConf = {
         .timer = ESC_DRIVER_MOTOR_TIMER,
-        .protocol = (EscProtocol)_model.config.output.protocol,
+        .protocol = static_cast<EscProtocol>(_model.config.output.protocol),
         .rate = _model.config.output.rate,
         .async = !!_model.config.output.async,
         .dshotTelemetry = !!_model.config.output.dshotTelemetry,
